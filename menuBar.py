@@ -256,8 +256,8 @@ def new_project():  #打开新建项目窗口
     top.resizable(False,False)
     top.transient(cmm.root)  #将top注册成root的临时窗口，去掉了最大最小化的按钮
     newPrj.newProject(top,)
-def 打开文件夹():   
-    folderPath=askdirectory()
+def 打开文件夹(folderPath=0):   
+    if not folderPath:  folderPath=askdirectory()
     cmm.refTree('',folderPath)  #menuRight模块中的refTree函数
     cmm.parser['default']['folderPath']=folderPath  # 修改默认文件夹路径  
 def 打开文件():

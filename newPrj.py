@@ -34,7 +34,7 @@ class newProject:  #新建项目的界面
         self.Entry_18 = tk.Entry(top,relief = "sunken")
         self.Entry_18.bind("<Return>",lambda e: self.ok())  #回车键
         self.Entry_18.grid(row=1, column=1, sticky="ew")
-        self.Entry_18.insert(0,os.getcwd().replace('\\','/')+'/Project')  #默认项目路径
+        #self.Entry_18.insert(0,os.getcwd().replace('\\','/')+'/Project')  #默认项目路径
         tk.Button(top,text=cmm.t("清空"),command=lambda:self.cancel()).grid(row=2, column=1, sticky="w",ipadx=15,pady=10,padx=30)
         tk.Button(top,text=cmm.t("确定"),command=lambda:self.ok()).grid(row=2, column=1, sticky="e",ipadx=15,pady=10,padx=30)        
         tk.Button(top,text=cmm.t("浏览"),command=lambda:self.browser()).grid(row=1, column=2, sticky="e",ipadx=15,padx=10)
@@ -56,8 +56,9 @@ class newProject:  #新建项目的界面
             os.makedirs(folderPath)
         except Exception as e:
             messagebox.showerror(cmm.t('错误'),cmm.t("新建文件夹{}失败{}").format(folderPath,e))
-        else:                
-            cmm.新建文件(folderPath+'\\main.py')
+        else:               
+            cmm.打开文件夹(folderPath)
+            cmm.新建文件(folderPath+'/main.py')
             cmm.refTree()
         #getattr(sys.modules['menuBxxr'],'refTree')(regCtrl, self.Entry_18.get()) #刷新项目资源管理器                
         self.exit()
